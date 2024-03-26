@@ -14,7 +14,8 @@
 #define CANARIA 0
 #define NUMNAV 1
 #define SYM 2
-#define TILDE 3
+#define FUN 3
+#define TLD 4
 
 // Behavior configuration
 &mt {
@@ -41,13 +42,13 @@
 // | TAB  |  W  |  L  |  Y  |  P  |  B  |     |  F  |  J   |  O   |  U  |  :  | ESC |
 // | CTRL |  C  |  R  |  S  |  T  |  G  |     |  M  |  N   |  E   |  I  |  A  | DEL |
 // | ALT  |  Q  |  Z  |  V  |  D  |  K  |     |  X  |  H   |  /   |  ,  |  .  | GUI |
-//             | NUMNAV | TIL | SFT/SPC |     | SFT/ENT | BKSP | NAV |
+//             | NUMNAV | TLD | SFT/SPC |     | SFT/ENT | BKSP | NAV |
 
                         bindings = <
    &kp TAB   &kp W &kp L &kp Y &kp P &kp B   &kp F &kp J  &kp O    &kp U     &kp SQT   &kp ESC
    &kp LCTRL &kp C &kp R &kp S &kp T &kp G   &kp M &kp N  &kp E    &kp I     &kp A     &kp DEL
    &kp LALT  &kp Q &kp Z &kp V &kp D &kp K   &kp X &kp H  &kp FSLH &kp COMMA &kp DOT   &kp LGUI
-        &mo NUMNAV &mo TIL &mt LSHFT SPACE   &mt RSHFT ENTER &kp BSPC &mo SYM
+        &mo NUMNAV &mo TLD &mt LSHFT SPACE   &mt RSHFT ENTER &kp BSPC &mo SYM
                         >;
                 };
 				
@@ -94,7 +95,7 @@
                         >;
                 };
 				
-				tilde {			
+				tilde_layer {			
 // -----------------------------------------------------------------------------------------
 // |   |   |  |  |  |  |   |  |   | Ó | Ú | Ü |   |
 // |   | Ç |  |  |  |  |   |  | Ñ | É | Í | Á |   |
