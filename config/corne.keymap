@@ -7,50 +7,129 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/ext_power.h>
+// #include <dt-bindings/zmk/outputs.h>
+
+// Layer Definitions
+#define CANARIA 0
+#define NUMNAV 1
+#define SYM 2
+#define TILDE 3
+
+// Behavior configuration
+&mt {
+    tapping-term-ms = <200>;
+    quick_tap_ms = <0>;
+    flavor = "tap-preferred";
+};
+&lt {
+    tapping-term-ms = <200>;
+    quick_tap_ms = <0>;
+    flavor = "tap-preferred";
+};
+&sk {
+    release-after-ms = <500>;
+    quick-release;
+};
+
+
+#define MACRO(name, keys)                 \
+name: name##_m {                      \
+    label          = #name;               \
+    compatible     = "zmk,behavior-macro";\
+    tap-ms         = <1>;                 \
+    wait-ms        = <1>;                 \
+    #binding-cells = <0>;                 \
+    bindings       = <keys>;              \
+};
+
+/ {
+    macros {
+        MACRO(acc_a, &kp SQT &kp &a) //funcionará? y con tildes mayusculas?
+        MACRO(acc_e, &kp SQT &kp &e) 
+        MACRO(acc_i, &kp SQT &kp &i)
+        MACRO(acc_o, &kp SQT &kp &o)
+        MACRO(acc_u, &kp SQT &kp &u)
+		MACRO(acc_uu, &kp LS(SQT) &kp u)
+    };
+};
+
 
 / {
         keymap {
                 compatible = "zmk,keymap";
 
-                default_layer {
-// -----------------------------------------------------------------------------------------
-// |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BKSP |
-// | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
-// | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | ESC  |
-//                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
+                canaria {			
+// ----------------------------------------------------------------------------------
+// | TAB  |  W  |  L  |  Y  |  P  |  B  |     |  F  |  J   |  O   |  U  |  :  | ESC |
+// | CTRL |  C  |  R  |  S  |  T  |  G  |     |  M  |  N   |  E   |  I  |  A  | DEL |
+// | ALT  |  Q  |  Z  |  V  |  D  |  K  |     |  X  |  H   |  /   |  ,  |  .  | GUI |
+//             | NUMNAV | TIL | SFT/SPC |     | SFT/ENT | BKSP | NAV |
+
                         bindings = <
-   &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSPC
-   &kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
-   &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp ESC
-                  &kp LGUI &mo 1 &kp SPACE   &kp RET &mo 2 &kp RALT
+   &kp TAB   &kp W &kp L &kp Y &kp P &kp B   &kp F &kp J  &kp O    &kp U     &kp SQT   &kp ESC
+   &kp LCTRL &kp C &kp R &kp S &kp T &kp G   &kp M &kp N  &kp E    &kp I     &kp A     &kp DEL
+   &kp LALT  &kp Q &kp Z &kp V &kp D &kp K   &kp X &kp H  &kp FSLH &kp COMMA &kp DOT   &kp LGUI
+        &mo NUMNAV &mo TIL &mt LSHFT SPACE   &mt RSHFT ENTER &BSPC &mo SYM
                         >;
                 };
-                lower_layer {
-// -----------------------------------------------------------------------------------------
-// |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |
-// | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
-// | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
-//                    | GUI |     | SPC |   | ENT |     | ALT |
+				
+				number_navigation {
+// ----------------------------------------------------------------------------------------
+// | TAB  | HOME | LWORD | RWORD | END   | PGUP |     |  /  |  7  |  8  |  9  |  -  |  ,  |
+// | CTRL | LEFT | UP    | DOWN  | RIGHT | PGDN |     |  *  |  4  |  5  |  6  |  +  | DEL |
+// | ALT  | UNDO | CUT   | COPY  | PASTE | REDO |     |  0  |  1  |  2  |  3  |  =  |  .  |
+
                         bindings = <
-   &kp TAB    &kp N1       &kp N2       &kp N3       &kp N4       &kp N5         &kp N6   &kp N7   &kp N8 &kp N9    &kp N0 &kp BSPC
-   &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
-   &kp LSHFT  &trans       &trans       &trans       &trans       &trans         &trans   &trans   &trans &trans    &trans &trans
-                                    &kp LGUI     &trans       &kp SPACE      &kp RET  &trans   &kp RALT
+	&trans	&HOME	  &kp LC(LEFT) &kp LC(RIGHT) &END	   &kp PG_UP	&SLASH	&N7	&N6	&N9	&MINUS	&COMMA
+	&trans	&kp LEFT  &kp DOWN     &kp UP 		 &kp RIGHT &kp PG_DN 	&AMPS	&N4	&N5	&N6	&PLUS	&trans	
+	&trans	&kp LC(Z) &kp LC(X)	   &kp LC(C)	 &kp LC(V) &kp LC(Y)	&N0		&N1	&N2	&N3	&EQUAL	&DOT
+                                              &trans &trans   &trans    &trans   &trans    &trans
+                        >;
+                };
+				
+                symbols {
+
+// ------------------------------------------------------------------------------
+// | TAB  |     |  "  |  #  |  (  |  €  |   |  /  |  7  |  8  |  9  |  -  |  ,  |
+// | CTRL |  |  |  !  |  ?  |  [  |  &  |   |  *  |  4  |  5  |  6  |  +  | DEL |
+// | ALT  |     |     |  <  |  {  |  $  |   |  0  |  1  |  2  |  3  |  =  |  .  |
+
+                        bindings = <
+   &trans	&none	&none	&none	&none	&none		&none	&none	&none	&none	&none	&trans	
+   &trans	&none	&none	&none	&none	&none		&none	&none	&none	&none	&none	&trans	
+   &trans	&none	&none	&none	&none	&none		&none	&none	&none	&none	&none	&trans	   
+							&trans 	&trans	&trans		&trans  &trans 	&trans
                         >;
                 };
 
-                raise_layer {
+				adjust_layer {			
 // -----------------------------------------------------------------------------------------
-// |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BKSP |
-// | CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
-// | SHFT |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
-//                    | GUI |     | SPC |   | ENT |     | ALT |
+// | BTCLR| BT1  | BT2 | BT3  | BT4 | VOL_UP |   | NEXT | F7 | F8 | F9 | F12 | |
+// |      | CAPS |     | SNIP |     | VOL_DN |   | PREV | F4 | F5 | F6 | F11 | |
+// |      |      |     |      |     | MUTE   |   | PLAY | F1 | F2 | F3 | F10 | |
+//                      |     |     |        |   |      |    |    |
                         bindings = <
-   &kp  TAB  &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT   &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR &kp BSPC
-   &kp LCTRL &trans   &trans &trans   &trans   &trans      &kp MINUS &kp EQUAL &kp LBKT  &kp RBKT &kp BSLH &kp GRAVE
-   &kp LSHFT &trans   &trans &trans   &trans   &trans      &kp UNDER &kp PLUS  &kp LBRC  &kp RBRC &kp PIPE &kp TILDE
-                             &kp LGUI &trans   &kp SPACE   &kp RET   &trans    &kp RALT
+   &bt BT_CLR &bt BT_SEL 0	&bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3	&bt BT_SEL 4 &XXXX		&XXXX	&kp F7	&kp F8	&kp F9	&kp F12	&trans	
+   &trans 	  &XXXX			&none		 &XXXX		  &none		 	&XXXX		 &XXXX		&XXXX	&kp F4	&kp F5	&kp F6	&kp F11	&trans	
+   &trans 	  &none			&none		 &none		  &none		 	&XXXX		 &XXXX		&XXXX	&kp F1	&kp F2	&kp F3	&kp F10	&trans	   
+													  &trans 		&trans 		 &trans		&trans  &trans 	&trans
                         >;
                 };
+				
+				tilde {			
+// -----------------------------------------------------------------------------------------
+// |   |   |  |  |  |  |   |  |   | Ó | Ú | Ü |   |
+// |   | Ç |  |  |  |  |   |  | Ñ | É | Í | Á |   |
+// |   |   |  |  |  |  |   |  |   |   |   |   |   |
+//            |  |  |  |   |  |   |   |
+                        bindings = <
+   &none &none &none &none &none &none   &none &none    &acc_o_m &acc_u_m &acc_uu_m &none
+   &none &BSLH &none &none &none &none   &none &kp SEMI &acc_e_m &acc_i_m &acc_a_m  &none
+   &none &none &none &none &none &none   &none &none    &none    &none    &none     &none
+                     &none &none &none   &none &none    &none
+                        >;
+                };
+ 
         };
 };
