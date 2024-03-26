@@ -21,7 +21,7 @@
 &mt {
     tapping-term-ms = <200>;
     quick_tap_ms = <0>;
-    flavor = "tap-preferred";
+    flavor = "balanced";
 };
 &lt {
     tapping-term-ms = <200>;
@@ -31,6 +31,30 @@
 &sk {
     release-after-ms = <500>;
     quick-release;
+};
+&sl {
+    release-after-ms = <500>;
+};
+
+#define MACRO(name, keys)                 \
+name: name##_m {                      \
+    label          = #name;               \
+    compatible     = "zmk,behavior-macro";\
+    tap-ms         = <1>;                 \
+    wait-ms        = <1>;                 \
+    #binding-cells = <0>;                 \
+    bindings       = <keys>;              \
+};
+
+/ {
+    macros {
+        MACRO(acc_a, &kp SQT &kp &a) //funcionará? y con tildes mayusculas?
+        MACRO(acc_e, &kp SQT &kp &e) 
+        MACRO(acc_i, &kp SQT &kp &i)
+        MACRO(acc_o, &kp SQT &kp &o)
+        MACRO(acc_u, &kp SQT &kp &u)
+		MACRO(acc_uu, &kp LS(SQT) &kp u)
+    };
 };
 
 / {
@@ -48,7 +72,7 @@
    &kp TAB   &kp W &kp L &kp Y &kp P &kp B   &kp F &kp J  &kp O    &kp U     &kp SQT   &kp ESC
    &kp LCTRL &kp C &kp R &kp S &kp T &kp G   &kp M &kp N  &kp E    &kp I     &kp A     &kp DEL
    &kp LALT  &kp Q &kp Z &kp V &kp D &kp K   &kp X &kp H  &kp FSLH &kp COMMA &kp DOT   &kp LGUI
-        &mo NUMNAV &mo TLD &mt LSHFT SPACE   &mt RSHFT ENTER &kp BSPC &mo SYM
+        &mo NUMNAV &sl TLD &mt LSHFT SPACE   &mt RSHFT ENTER &kp BSPC &mo SYM
                         >;
                 };
 				
