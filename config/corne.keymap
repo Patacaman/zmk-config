@@ -32,29 +32,6 @@
     quick-release;
 };
 
-
-#define MACRO(name, keys)                 \
-name: name##_m {                      \
-    label          = #name;               \
-    compatible     = "zmk,behavior-macro";\
-    tap-ms         = <1>;                 \
-    wait-ms        = <1>;                 \
-    #binding-cells = <0>;                 \
-    bindings       = <keys>;              \
-};
-
-/ {
-    macros {
-        MACRO(acc_a, &kp SQT &kp &a) //funcionará? y con tildes mayusculas?
-        MACRO(acc_e, &kp SQT &kp &e) 
-        MACRO(acc_i, &kp SQT &kp &i)
-        MACRO(acc_o, &kp SQT &kp &o)
-        MACRO(acc_u, &kp SQT &kp &u)
-		MACRO(acc_uu, &kp LS(SQT) &kp u)
-    };
-};
-
-
 / {
         keymap {
                 compatible = "zmk,keymap";
@@ -70,7 +47,7 @@ name: name##_m {                      \
    &kp TAB   &kp W &kp L &kp Y &kp P &kp B   &kp F &kp J  &kp O    &kp U     &kp SQT   &kp ESC
    &kp LCTRL &kp C &kp R &kp S &kp T &kp G   &kp M &kp N  &kp E    &kp I     &kp A     &kp DEL
    &kp LALT  &kp Q &kp Z &kp V &kp D &kp K   &kp X &kp H  &kp FSLH &kp COMMA &kp DOT   &kp LGUI
-        &mo NUMNAV &mo TIL &mt LSHFT SPACE   &mt RSHFT ENTER &BSPC &mo SYM
+        &mo NUMNAV &mo TIL &mt LSHFT SPACE   &mt RSHFT ENTER &kp BSPC &mo SYM
                         >;
                 };
 				
@@ -81,9 +58,9 @@ name: name##_m {                      \
 // | ALT  | UNDO | CUT   | COPY  | PASTE | REDO |     |  0  |  1  |  2  |  3  |  =  |  .  |
 
                         bindings = <
-	&trans	&HOME	  &kp LC(LEFT) &kp LC(RIGHT) &END	   &kp PG_UP	&SLASH	&N7	&N6	&N9	&MINUS	&COMMA
-	&trans	&kp LEFT  &kp DOWN     &kp UP 		 &kp RIGHT &kp PG_DN 	&AMPS	&N4	&N5	&N6	&PLUS	&trans	
-	&trans	&kp LC(Z) &kp LC(X)	   &kp LC(C)	 &kp LC(V) &kp LC(Y)	&N0		&N1	&N2	&N3	&EQUAL	&DOT
+	&trans	&kp HOME  &kp LC(LEFT) &kp LC(RIGHT) &kp END   &kp PG_UP	&kp SLASH	&kp N7	&kp N6	&kp N9	&kp MINUS	&kp COMMA
+	&trans	&kp LEFT  &kp DOWN     &kp UP 		 &kp RIGHT &kp PG_DN 	&kp AMPS	&kp N4	&kp N5	&kp N6	&kp PLUS	&trans	
+	&trans	&kp LC(Z) &kp LC(X)	   &kp LC(C)	 &kp LC(V) &kp LC(Y)	&kp N0		&kp N1	&kp N2	&kp N3	&kp EQUAL	&kp DOT
                                               &trans &trans   &trans    &trans   &trans    &trans
                         >;
                 };
@@ -111,7 +88,7 @@ name: name##_m {                      \
 //                      |     |     |        |   |      |    |    |
                         bindings = <
    &bt BT_CLR &bt BT_SEL 0	&bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3	&bt BT_SEL 4 &XXXX		&XXXX	&kp F7	&kp F8	&kp F9	&kp F12	&trans	
-   &trans 	  &XXXX			&none		 &XXXX		  &none		 	&XXXX		 &XXXX		&XXXX	&kp F4	&kp F5	&kp F6	&kp F11	&trans	
+   &trans 	  &kp CAPS		&none		 &none		  &none		 	&XXXX		 &XXXX		&XXXX	&kp F4	&kp F5	&kp F6	&kp F11	&trans	
    &trans 	  &none			&none		 &none		  &none		 	&XXXX		 &XXXX		&XXXX	&kp F1	&kp F2	&kp F3	&kp F10	&trans	   
 													  &trans 		&trans 		 &trans		&trans  &trans 	&trans
                         >;
@@ -124,9 +101,9 @@ name: name##_m {                      \
 // |   |   |  |  |  |  |   |  |   |   |   |   |   |
 //            |  |  |  |   |  |   |   |
                         bindings = <
-   &none &none &none &none &none &none   &none &none    &acc_o_m &acc_u_m &acc_uu_m &none
-   &none &BSLH &none &none &none &none   &none &kp SEMI &acc_e_m &acc_i_m &acc_a_m  &none
-   &none &none &none &none &none &none   &none &none    &none    &none    &none     &none
+   &none &none    &none &none &none &none   &none &none    &none    &none    &none &none
+   &none &kp BSLH &none &none &none &none   &none &kp SEMI &none    &none    &none &none
+   &none &none    &none &none &none &none   &none &none    &none    &none    &none &none
                      &none &none &none   &none &none    &none
                         >;
                 };
