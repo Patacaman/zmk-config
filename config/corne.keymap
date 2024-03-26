@@ -21,7 +21,7 @@
 &mt {
     tapping-term-ms = <200>;
     quick_tap_ms = <0>;
-    flavor = "balanced";
+    flavor = "tap-preferred";
 };
 &lt {
     tapping-term-ms = <200>;
@@ -48,12 +48,12 @@ name: name##_m {                      \
 
 / {
     macros {
-        MACRO(acc_a, &kp SQT &kp &a) //funcionará? y con tildes mayusculas?
-        MACRO(acc_e, &kp SQT &kp &e) 
-        MACRO(acc_i, &kp SQT &kp &i)
-        MACRO(acc_o, &kp SQT &kp &o)
-        MACRO(acc_u, &kp SQT &kp &u)
-		MACRO(acc_uu, &kp LS(SQT) &kp u)
+        MACRO(acc_a, &kp SQT &kp A) //funcionará? y con tildes mayusculas?
+        MACRO(acc_e, &kp SQT &kp E) 
+        MACRO(acc_i, &kp SQT &kp I)
+        MACRO(acc_o, &kp SQT &kp O)
+        MACRO(acc_u, &kp SQT &kp U)
+		MACRO(acc_uu, &kp SQT &kp Y)
     };
 };
 
