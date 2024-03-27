@@ -7,8 +7,6 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/ext_power.h>
-// #include <dt-bindings/zmk/outputs.h>
 
 // Layer Definitions
 #define CANARIA 0
@@ -19,7 +17,7 @@
 
 // Behavior configuration
 &mt {
-    tapping-term-ms = <200>;
+    tapping-term-ms = <200> 
     quick_tap_ms = <0>;
     flavor = "tap-preferred";
 };
@@ -63,19 +61,20 @@ name: name##_m {                      \
 
                 canaria {			
 // ----------------------------------------------------------------------------------
-// | TAB  |  W  |  L  |  Y  |  P  |  B  |     |  F  |  J   |  O   |  U  |  :  | ESC |
+// | TAB  |  W  |  L  |  Y  |  P  |  B  |     |  F  |  J   |  O   |  U  |  ;  | ESC |
 // | CTRL |  C  |  R  |  S  |  T  |  G  |     |  M  |  N   |  E   |  I  |  A  | DEL |
 // | ALT  |  Q  |  Z  |  V  |  D  |  K  |     |  X  |  H   |  /   |  ,  |  .  | GUI |
 //             | NUMNAV | TLD | SFT/SPC |     | SFT/ENT | BKSP | NAV |
 
                         bindings = <
-   &kp TAB   &kp W &kp L &kp Y &kp P &kp B   &kp F &kp J  &kp O    &kp U     &kp SQT   &kp ESC
+   &kp TAB   &kp W &kp L &kp Y &kp P &kp B   &kp F &kp J  &kp O    &kp U     &kp SEMI   &kp ESC
    &kp LCTRL &kp C &kp R &kp S &kp T &kp G   &kp M &kp N  &kp E    &kp I     &kp A     &kp DEL
    &kp LALT  &kp Q &kp Z &kp V &kp D &kp K   &kp X &kp H  &kp FSLH &kp COMMA &kp DOT   &kp LGUI
         &mo NUMNAV &sl TLD &mt LSHFT SPACE   &mt RSHFT ENTER &kp BSPC &mo SYM
                         >;
                 };
-				
+				123456769!@#$%^&^(
+				)
 				number_navigation {
 // ----------------------------------------------------------------------------------------
 // | TAB  | HOME | LWORD | RWORD | END   | PGUP |     |  /  |  7  |  8  |  9  |  -  |  ,  |
@@ -83,7 +82,7 @@ name: name##_m {                      \
 // | ALT  | UNDO | CUT   | COPY  | PASTE | REDO |     |  0  |  1  |  2  |  3  |  =  |  .  |
 
                         bindings = <
-	&trans	&kp HOME  &kp LC(LEFT) &kp LC(RIGHT) &kp END   &kp PG_UP	&kp SLASH	&kp N7	&kp N6	&kp N9	&kp MINUS	&kp COMMA
+	&trans	&kp HOME  &kp LC(LEFT) &kp LC(RIGHT) &kp END   &kp PG_UP	&kp SLASH	&kp N7	&kp N8	&kp N9	&kp MINUS	&kp COMMA
 	&trans	&kp LEFT  &kp DOWN     &kp UP 		 &kp RIGHT &kp PG_DN 	&kp STAR	&kp N4	&kp N5	&kp N6	&kp PLUS	&trans	
 	&trans	&kp LC(Z) &kp LC(X)	   &kp LC(C)	 &kp LC(V) &kp LC(Y)	&kp N0		&kp N1	&kp N2	&kp N3	&kp EQUAL	&kp DOT
                                               &none &trans   &trans    &trans   &trans    &mo FUN
@@ -92,44 +91,45 @@ name: name##_m {                      \
 				
                 symbols {
 
-// ------------------------------------------------------------------------------
-// | TAB  |     |  "  |  #  |  (  |  €  |   |  /  |  7  |  8  |  9  |  -  |  ,  |
-// | CTRL |  |  |  !  |  ?  |  [  |  &  |   |  *  |  4  |  5  |  6  |  +  | DEL |
-// | ALT  |     |     |  <  |  {  |  $  |   |  0  |  1  |  2  |  3  |  =  |  .  |
+// ----------------------------------------------------------------------------------
+// 
+// | TAB  |  ¡  |  !  |  [  |  ]  |  \  |       |  &  |  "  |  ~  |  %  |  º  |     |
+// | CTRL |  ¿  |  ?  |  (  |  )  |  |  |       |  €  |  '  |  -  |  #  |  @  | DEL |
+// | ALT  |  <  |  >  |  {  |  }  |  /  |       |  $  |  ¨  |  _  |  ^  |  Ø  |     |
 
                         bindings = <
-   &trans	&none	 &none		&kp HASH	  &kp LPAR	&none		&none	&none	&none	&none	&none	&trans	
-   &trans	&kp PIPE &kp EXCL	&kp LS(MINUS) &kp LBKT	&kp AMPS	&none	&none	&none	&none	&none	&trans	
-   &trans	&none	 &none		&kp LT		  &kp LBRC	&none		&none	&none	&none	&none	&none	&trans	   
+   &trans	&kp RA(1)	  &kp EXCL 		&kp LBKT &kp RBKT &kp BSLH	&kp AMPS	&kp DQT			&kp TILDE &kp PRCNT	&kp LS(RA(SEMI)) &trans	
+   &trans	&kp RA(SLASH) &kp LS(SLASH)	&kp LPAR &kp RPAR &kp PIPE	&kp RA(5)	&kp SQT			&kp MINUS &kp HASH	&kp AT			 &trans	
+   &trans	&kp LT		  &kp GT	 	&kp LBRC &kp RBRC &kp SLASH	&kp DOLLAR	&kp LS(RA(SQT)	&kp UNDER &kp CARET	&kp LS(RA(L))	 &trans	   
 							&mo FUN 	&trans	&trans		&trans  &trans 	&none
                         >;
                 };
 
 				adjust_layer {			
 // -----------------------------------------------------------------------------------------
-// | BTCLR| BT0  | BT1 | BT2  | BT3 | VOL_UP |   | NEXT | F7 | F8 | F9 | F12 | |
-// |      | CAPS |     | SNIP |     | VOL_DN |   | PREV | F4 | F5 | F6 | F11 | |
-// |      |      |     |      |     | MUTE   |   | PLAY | F1 | F2 | F3 | F10 | |
-//                      |     |     |        |   |      |    |    |
+// | BTCLR | BT0  | BT1 | BT2  | BT3 | VOL_UP |     | NEXT | F7 | F8 | F9 | F12 |  |
+// |       | CAPS |     | SNIP |     | VOL_DN |     | PREV | F4 | F5 | F6 | F11 |  |
+// |       |      |     |      |     | MUTE   |     | PLAY | F1 | F2 | F3 | F10 |  |
+//                      |      |     |        |     |      |    |    |
                         bindings = <
    &bt BT_CLR &bt BT_SEL 0	&bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3	&kp C_VOL_UP		&kp C_NEXT	&kp F7	&kp F8	&kp F9	&kp F12	&trans	
    &trans 	  &kp CAPS		&none		 &kp LG(LS(S)) &none		&kp C_VOL_DN		&kp C_PREV	&kp F4	&kp F5	&kp F6	&kp F11	&trans	
-   &trans 	  &none			&none		 &none		  &none		 	&kp C_MUTE			&kp C_PP	&kp F1	&kp F2	&kp F3	&kp F10	&trans	   
+   &trans 	  &to NUMNAV	&tog NUMNAV	 &none		  &none		 	&kp C_MUTE			&kp C_PP	&kp F1	&kp F2	&kp F3	&kp F10	&trans	   
 										 &trans 	  &trans 		&trans				&trans  	&trans 	&trans
                         >;
                 };
 				
 				tilde_layer {			
 // -----------------------------------------------------------------------------------------
-// |   |   |  |  |  |  |   |  |   | Ó | Ú | Ü |   |
-// |   | Ç |  |  |  |  |   |  | Ñ | É | Í | Á |   |
-// |   |   |  |  |  |  |   |  |   |   |   |   |   |
-//            |  |  |  |   |  |   |   |
+// |   |   |   |   |   |   |      |   |   | Ó | Ú | Ü |   |
+// |   | Ç |   |   |   |   |      |   | Ñ | É | Í | Á |   |
+// |   |   |   |   |   |   |      |   |   |   |   |   |   |
+//             |   |   |   |      |   |   |   |
                         bindings = <
-   &none &none    &none &none &none &none   &none &none    &acc_o &acc_u &acc_uu &none
-   &none &kp BSLH &none &none &none &none   &none &kp SEMI &acc_e &acc_i &acc_a  &none
+   &none &none    &none &none &none &none   &none &none    &kp RA(o) &kp RA(u) &kp RA(y) &none
+   &none &kp RA(COMMA) &none &none &none &none   &none &kp RA(n) &kp RA(e) &kp RA(i) &kp RA(a)  &none
    &none &none    &none &none &none &none   &none &none    &none  &none  &none   &none
-						&none &none &none   &none &kp LC(BSPC)    &none
+						&none &none &trans  &trans &kp LC(BSPC)    &none
                         >;
                 };
  
