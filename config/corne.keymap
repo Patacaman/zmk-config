@@ -34,27 +34,6 @@
     release-after-ms = <500>;
 };
 
-#define MACRO(name, keys)                 \
-name: name##_m {                      \
-    label          = #name;               \
-    compatible     = "zmk,behavior-macro";\
-    tap-ms         = <1>;                 \
-    wait-ms        = <1>;                 \
-    #binding-cells = <0>;                 \
-    bindings       = <keys>;              \
-};
-
-/ {
-    macros {
-        MACRO(acc_a, &kp SQT &kp A) //funcionará? y con tildes mayusculas?
-        MACRO(acc_e, &kp SQT &kp E) 
-        MACRO(acc_i, &kp SQT &kp I)
-        MACRO(acc_o, &kp SQT &kp O)
-        MACRO(acc_u, &kp SQT &kp U)
-		MACRO(acc_uu, &kp SQT &kp Y)
-    };
-};
-
 / {
         keymap {
                 compatible = "zmk,keymap";
@@ -64,7 +43,7 @@ name: name##_m {                      \
 // | TAB  |  W  |  L  |  Y  |  P  |  B  |     |  F  |  J   |  O   |  U  |  ;  | ESC |
 // | CTRL |  C  |  R  |  S  |  T  |  G  |     |  M  |  N   |  E   |  I  |  A  | DEL |
 // | ALT  |  Q  |  Z  |  V  |  D  |  K  |     |  X  |  H   |  /   |  ,  |  .  | GUI |
-//             | NUMNAV | TLD | SFT/SPC |     | SFT/ENT | BKSP | NAV |
+//       | NUMNAV/FUN | TLD | SFT/SPACE |     | SFT/ENTER | BKSP | SYM/FUN |
 
                         bindings = <
    &kp TAB   &kp W &kp L &kp Y &kp P &kp B   &kp F &kp J  &kp O    &kp U     &kp SEMI   &kp ESC
@@ -73,7 +52,7 @@ name: name##_m {                      \
         &mo NUMNAV &sl TLD &mt LSHFT SPACE   &mt RSHFT ENTER &kp BSPC &mo SYM
                         >;
                 };
-				123456769!@#$%^&^(
+
 				)
 				number_navigation {
 // ----------------------------------------------------------------------------------------
