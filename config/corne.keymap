@@ -104,9 +104,9 @@
 //             |   |   |   |      |   | WORD_BACKSPACE |   |
 
                         bindings = <
-   &none &none    &none &none &none &none   &none &none    &kp RA(o) &kp RA(u) &kp RA(y) &none
-   &none &kp RA(COMMA) &none &none &none &none   &none &kp RA(n) &kp RA(e) &kp RA(i) &kp RA(a)  &none
-   &none &none    &none &none &none &none   &none &none    &none  &none  &none   &none
+   &none &none &none &none &none &none   		&none &none		&kp RA(O) &kp RA(U) &kp RA(Y) &none
+   &none &kp RA(COMMA) &none &none &none &none  &none &kp RA(N) &kp RA(E) &kp RA(I) &kp RA(A) &none
+   &none &none &none &none &none &none   		&none &none    	&none  	  &none  	&none     &none
 						&none &none &trans  &trans &kp LC(BSPC)    &none
                         >;
                 };
