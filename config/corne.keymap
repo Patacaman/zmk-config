@@ -52,8 +52,7 @@
         &mo NUMNAV &sl TLD &mt LSHFT SPACE   &mt RSHFT ENTER &kp BSPC &mo SYM
                         >;
                 };
-
-				)
+				
 				number_navigation {
 // ----------------------------------------------------------------------------------------
 // | TAB  | HOME | LWORD | RWORD | END   | PGUP |     |  /  |  7  |  8  |  9  |  -  |  ,  |
@@ -69,7 +68,6 @@
                 };
 				
                 symbols {
-
 // ----------------------------------------------------------------------------------
 // 
 // | TAB  |  ¡  |  !  |  [  |  ]  |  \  |       |  &  |  "  |  ~  |  %  |  º  |     |
@@ -89,10 +87,10 @@
 // | BTCLR | BT0  | BT1 | BT2  | BT3 | VOL_UP |     | NEXT | F7 | F8 | F9 | F12 |  |
 // |       | CAPS |     | SNIP |     | VOL_DN |     | PREV | F4 | F5 | F6 | F11 |  |
 // |       |      |     |      |     | MUTE   |     | PLAY | F1 | F2 | F3 | F10 |  |
-//                      |      |     |        |     |      |    |    |
+
                         bindings = <
    &bt BT_CLR &bt BT_SEL 0	&bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3	&kp C_VOL_UP		&kp C_NEXT	&kp F7	&kp F8	&kp F9	&kp F12	&trans	
-   &trans 	  &kp CAPS		&none		 &kp LG(LS(S)) &none		&kp C_VOL_DN		&kp C_PREV	&kp F4	&kp F5	&kp F6	&kp F11	&trans	
+   &trans 	  &caps_word	&kp CAPS	 &kp LG(LS(S)) &none		&kp C_VOL_DN		&kp C_PREV	&kp F4	&kp F5	&kp F6	&kp F11	&trans	
    &trans 	  &to NUMNAV	&tog NUMNAV	 &none		  &none		 	&kp C_MUTE			&kp C_PP	&kp F1	&kp F2	&kp F3	&kp F10	&trans	   
 										 &trans 	  &trans 		&trans				&trans  	&trans 	&trans
                         >;
@@ -103,7 +101,8 @@
 // |   |   |   |   |   |   |      |   |   | Ó | Ú | Ü |   |
 // |   | Ç |   |   |   |   |      |   | Ñ | É | Í | Á |   |
 // |   |   |   |   |   |   |      |   |   |   |   |   |   |
-//             |   |   |   |      |   |   |   |
+//             |   |   |   |      |   | WORD_BACKSPACE |   |
+
                         bindings = <
    &none &none    &none &none &none &none   &none &none    &kp RA(o) &kp RA(u) &kp RA(y) &none
    &none &kp RA(COMMA) &none &none &none &none   &none &kp RA(n) &kp RA(e) &kp RA(i) &kp RA(a)  &none
