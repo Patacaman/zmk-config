@@ -34,6 +34,10 @@
     release-after-ms = <500>;
 };
 
+&caps_word {
+    continue-list = <UNDERSCORE MINUS DOT COMMA LEFT RIGHT >;
+};
+
 / {
         keymap {
                 compatible = "zmk,keymap";
@@ -84,9 +88,9 @@
 
 				adjust_layer {			
 // -----------------------------------------------------------------------------------------
-// | BTCLR | BT0  | BT1 | BT2  | BT3 | VOL_UP |     | NEXT | F7 | F8 | F9 | F12 |  |
-// |       | CAPS |     | SNIP |     | VOL_DN |     | PREV | F4 | F5 | F6 | F11 |  |
-// |       |      |     |      |     | MUTE   |     | PLAY | F1 | F2 | F3 | F10 |  |
+// | BTCLR | BT0   | BT1   | BT2  | BT3 | VOL_UP |     | NEXT | F7 | F8 | F9 | F12 |  |
+// |       | CWORD | CLOCK | SNIP |     | VOL_DN |     | PREV | F4 | F5 | F6 | F11 |  |
+// |       | LAY1  | LAY1  |      |     | MUTE   |     | PLAY | F1 | F2 | F3 | F10 |  |
 
                         bindings = <
    &bt BT_CLR &bt BT_SEL 0	&bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3	&kp C_VOL_UP		&kp C_NEXT	&kp F7	&kp F8	&kp F9	&kp F12	&trans	
