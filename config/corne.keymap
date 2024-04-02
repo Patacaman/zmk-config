@@ -79,8 +79,8 @@
 // | ALT  |  <  |  >  |  {  |  }  |  /  |       |  $  |  ¨  |  _  |  ^  |  Ø  |     |
 
                         bindings = <
-   &trans	&kp RA(1)	  &kp EXCL 		&kp LBKT &kp RBKT &kp BSLH	&kp AMPS	&kp DQT			&kp TILDE &kp PRCNT	&kp LS(RA(SEMI)) &trans	
-   &trans	&kp RA(SLASH) &kp LS(SLASH)	&kp LPAR &kp RPAR &kp PIPE	&kp RA(5)	&kp SQT			&kp MINUS &kp HASH	&kp AT			 &trans	
+   &trans	&kp RA(N1)	  &kp EXCL 		&kp LBKT &kp RBKT &kp BSLH	&kp AMPS	&kp DQT			&kp TILDE &kp PRCNT	&kp LS(RA(SEMI)) &trans	
+   &trans	&kp RA(SLASH) &kp LS(SLASH)	&kp LPAR &kp RPAR &kp PIPE	&kp RA(N5)	&kp SQT			&kp MINUS &kp HASH	&kp AT			 &trans	
    &trans	&kp LT		  &kp GT	 	&kp LBRC &kp RBRC &kp SLASH	&kp DOLLAR	&kp LS(RA(SQT))	&kp UNDER &kp CARET	&kp LS(RA(L))	 &trans	   
 							&mo FUN 	&trans	&trans		&trans  &trans 	&none
                         >;
