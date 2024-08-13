@@ -9,7 +9,7 @@
 #include <dt-bindings/zmk/bt.h>
 
 // Layer Definitions
-#define CANARIA 0
+#define DHERF 0
 #define NUMNAV 1
 #define SYM 2
 #define FUN 3
@@ -35,24 +35,25 @@
 };
 
 &caps_word {
-    continue-list = <UNDERSCORE MINUS DOT COMMA LEFT RIGHT >;
+    continue-list = <UNDERSCORE MINUS DOT COMMA LEFT RIGHT BACKSPACE >;
 };
 
 / {
         keymap {
                 compatible = "zmk,keymap";
 
-                canaria {			
+                dherf {			
 // ----------------------------------------------------------------------------------
-// | TAB  |  W  |  L  |  Y  |  P  |  B  |     |  F  |  J   |  O   |  U  |  ;  | ESC |
-// | CTRL |  C  |  R  |  S  |  T  |  G  |     |  M  |  N   |  E   |  I  |  A  | DEL |
-// | ALT  |  Q  |  Z  |  V  |  D  |  K  |     |  X  |  H   |  /   |  ,  |  .  | GUI |
+// | TAB  |  V  |  L  |  B  |  M  |  K  |     |  J  |  F   |  O   |  U  |  ,  | ESC |
+// | CTRL |  S  |  R  |  N  |  T  |  Q  |     |  G  |  C   |  E   |  A  |  I  | DEL |
+// | ALT  |  Z  |  X  |  H  |  D  |  W  |     |  Y  |  P   |  '   |  -  |  .  | GUI |
 //       | NUMNAV/FUN | TLD | SFT/SPACE |     | SFT/ENTER | BKSP | SYM/FUN |
 
+
                         bindings = <
-   &kp TAB   &kp W &kp L &kp Y &kp P &kp B   &kp F &kp J  &kp O    &kp U     &kp SEMI   &kp ESC
-   &kp LCTRL &kp C &kp R &kp S &kp T &kp G   &kp M &kp N  &kp E    &kp I     &kp A     &kp DEL
-   &kp LALT  &kp Q &kp Z &kp V &kp D &kp K   &kp X &kp H  &kp FSLH &kp COMMA &kp DOT   &kp LGUI
+   &kp TAB   &kp V &kp L &kp B &kp M &kp K   &kp J &kp F  &kp O     &kp U   &kp COMMA &kp ESC
+   &kp LCTRL &kp S &kp R &kp N &kp T &kp Q   &kp G &kp C  &kp E     &kp A   &kp I     &kp DEL
+   &kp LALT  &kp Z &kp X &kp H &kp D &kp W   &kp Y &kp P  &kp MINUS &kp SQT &kp DOT   &kp LGUI
         &mo NUMNAV &sl TLD &mt LSHFT SPACE   &mt RSHFT ENTER &kp BSPC &mo SYM
                         >;
                 };
@@ -102,9 +103,9 @@
 				
 				tilde_layer {			
 // -----------------------------------------------------------------------------------------
-// |   |   |   |   |   |   |      |   |   | Ó | Ú | Ü |   |
-// |   | Ç |   |   |   |   |      |   | Ñ | É | Í | Á |   |
-// |   |   |   |   |   |   |      |   |   |   |   |   |   |
+// |   |     |('ll)|   |     |     |      |   |   | Ó | Ú | Ü |   |
+// |   |('re)|     | Ñ |(n't)|(que)|      |   | Ç | É | Á | Í |   |
+// |   |     |     |   |     |     |      |   |   |   |   |   |   |
 //             |   |   |   |      |   | WORD_BACKSPACE |   |
 
                         bindings = <
